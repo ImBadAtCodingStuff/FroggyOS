@@ -8,11 +8,10 @@ def turn():
     pass
 
 # sets the motor voltage to positive 1/whatever voltage is a good speed
-def forward(vari):
+def forward(speed):
     # set the motor speed to 1
-    if vari == 1:
-        print("Driving forward...")
-    if vari == 0:
+    print("Driving forward at speed: " + str(speed * .5 + .5))
+    if speed == 0:
         print("Stopping...")
 
 # sets the motor voltage to negative 1/whatever voltage is a good speed

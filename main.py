@@ -1,5 +1,5 @@
 import Drivetrain.turn as turn
-import Drivetrain.drive as Drivetrain
+import Drivetrain.drive as drivetrain
 import cam as camera
 from time import sleep
 
@@ -10,14 +10,19 @@ from time import sleep
 
 # controls
 import pygame as myInput
+import os
+import threading
 
-
+os.system("clear")
 myInput.joystick.init()
-print(myInput.joystick.get_count())
+print("Found "+str(myInput.joystick.get_count())+" controllers...")
 Joysticks = [myInput.joystick.Joystick(x) for x in range(myInput.joystick.get_count())]
 
 myInput.init()
 
+def image_capture():
+	image_capture_thread = threading.Thread(target=camera.take_image)
+	image_capture_thread.start()
 
 
 while True:
@@ -33,13 +38,16 @@ while True:
   
             if controller1.get_hat(0) == (-1, 0):
                 #print("button LEFT_DPAD pressed...")
-                turn.turn_angle(-1)
+                #turn.turn_angle(-1)
+                pass
             if controller1.get_hat(0) == (1, 0):
                 #print("button RIGHT_DPAD pressed...")
-                turn.turn_angle(1)
+                #turn.turn_angle(1)
+                pass
             if controller1.get_hat(0) == (0, -1):
                 #print("button DOWN_DPAD pressed...")
-                turn.turn_angle(0)
+                #turn.turn_angle(0)
+                pass
             if controller1.get_hat(0) == (0, 1):
                 #print("button UP_DPAD pressed...")
                 pass
@@ -49,20 +57,19 @@ while True:
         if event.type == myInput.JOYAXISMOTION:  # Joystick
             #print(myInput.joystick.Joystick(0).get_axis(0))
             
-            if controller1.get_axis(0) >= 0.5:
-                #print ("right has been pressed") 
-                pass   
-            if controller1.get_axis(0) <= -1:
-                #print ("left has been pressed")  
-                pass    
-            if controller1.get_axis(1) >= 0.5:
-                #print ("Down has been pressed")  
-                pass
-            if controller1.get_axis(1) <= -1:
-                #print ("Up has been pressed") 
-                pass
+            CJAMS_hor = controller1.get_axis(0)
+            CJAMS_ver = controller1.get_axis(1)
+            turn.turn_angle(CJAMS_hor+.10)
+            # Reset state
+            if CJAMS_hor <= 0.4 and CJAMS_hor >= -0.4 and CJAMS_ver <= 0.4 and CJAMS_ver >= -0.4:
+                turn.turn_reset()
                 
-                #print("Joystick Moved")
+            # Getting trigger inputs   
+            if event.type == myInput.JOYAXISMOTION:
+				
+                RIGHT_TRIGGER = controller1.get_axis(4)
+                #print("yipeee")
+                drivetrain.forward(RIGHT_TRIGGER)
         
         # getting simple button presses
         if event.type == myInput.JOYBUTTONDOWN:
@@ -71,13 +78,13 @@ while True:
             # get ABXY buttons
             if controller1.get_button(0):
                 #print("button A pressed...")
-                Drivetrain.forward(1)
+                #Drivetrain.forward(1)
             if controller1.get_button(1):
                 #print("button B pressed...")
                 pass
             if controller1.get_button(4):
                 #print("button Y pressed...") 
-                camera.take_image()     
+                image_capture()     
             if controller1.get_button(3):
                 #print("button X pressed...")
                 pass
