@@ -4,12 +4,15 @@ import cam as camera
 from time import sleep
 
 
+# live
+
 # Example
 #Drivetrain.forward(1)
 #sleep(2)
 #Drivetrain.forward(0)
 
-
+# controls
+import pygame as myInput
 import os
 import threading
 
