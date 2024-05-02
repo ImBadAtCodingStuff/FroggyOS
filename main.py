@@ -3,6 +3,8 @@ import Drivetrain.drive as drivetrain
 import cam as camera
 from time import sleep
 
+# ahhhhhhhhhhhhh
+
 # Example
 #Drivetrain.forward(1)
 #sleep(2)
@@ -77,6 +79,7 @@ while True:
             
             # get ABXY buttons
             if controller1.get_button(0):
+                pass
                 #print("button A pressed...")
                 #Drivetrain.forward(1)
             if controller1.get_button(1):
