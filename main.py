@@ -3,6 +3,8 @@ import Drivetrain.drive as drivetrain
 import cam as camera
 from time import sleep
 
+import math
+
 # ahhhhhhhhhhhhh
 
 # Example
