@@ -9,8 +9,7 @@ from time import sleep
 #sleep(2)
 #Drivetrain.forward(0)
 
-# controls
-import pygame as myInput
+
 import os
 import threading
 
