@@ -59,7 +59,8 @@ while True:
             
             CJAMS_hor = controller1.get_axis(0)
             CJAMS_ver = controller1.get_axis(1)
-            turn.turn_angle(CJAMS_hor+.10)
+            #print(CJAMS_hor)
+            turn.turn_angle(-CJAMS_hor+.10)
             # Reset state
             if CJAMS_hor <= 0.4 and CJAMS_hor >= -0.4 and CJAMS_ver <= 0.4 and CJAMS_ver >= -0.4:
                 turn.turn_reset()
@@ -68,8 +69,36 @@ while True:
             if event.type == myInput.JOYAXISMOTION:
 				
                 RIGHT_TRIGGER = controller1.get_axis(4)
+                LEFT_TRIGGER = controller1.get_axis(5)
+                
+                forward_drive = RIGHT_TRIGGER*.5+.5
+                reverse_drive = LEFT_TRIGGER*.5+.5
+                
+                if (forward_drive>0):
+                    #print("forward")
+					# default to forward
+                
+                    #print(drive_speed)
+                    if forward_drive>0:
+                        drivetrain.forward(forward_drive)
+                    else:
+                        pass
+                  
+                elif (reverse_drive>0):
+                    print("reverse") 
+                    # default to reverse
+                    if reverse_drive>0:
+                        drivetrain.reverse(reverse_drive)
+                        
+                    else:
+                        pass
+                        #.578
+                else:
+                        print("nothing pressed")
+                        drivetrain.stop_motor()
+                
                 #print("yipeee")
-                drivetrain.forward(RIGHT_TRIGGER)
+                
         
         # getting simple button presses
         if event.type == myInput.JOYBUTTONDOWN:
@@ -79,6 +108,7 @@ while True:
             if controller1.get_button(0):
                 #print("button A pressed...")
                 #Drivetrain.forward(1)
+                pass
             if controller1.get_button(1):
                 #print("button B pressed...")
                 pass
