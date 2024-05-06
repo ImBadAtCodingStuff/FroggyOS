@@ -1,12 +1,16 @@
 import cv2
 
-cam = cv2.VideoCapture(0)
+# What port is the camera on?
+USB_CAMERA = 0
+
+
+cam = cv2.VideoCapture(USB_CAMERA)
 
 # Set the resolution to 640x480
 cam.set(3, 640)
 cam.set(4, 480)
 
-cv2.namedWindow("test")
+cv2.namedWindow("USB Camera Feed")
 
 img_counter = 0
 
