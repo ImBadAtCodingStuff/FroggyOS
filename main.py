@@ -79,6 +79,7 @@ while True:
             if controller1.get_button(0):
                 #print("button A pressed...")
                 #Drivetrain.forward(1)
+                pass
             if controller1.get_button(1):
                 #print("button B pressed...")
                 pass
