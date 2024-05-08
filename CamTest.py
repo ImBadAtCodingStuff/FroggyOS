@@ -21,6 +21,7 @@ while True:
         break
     # Flip the frame horizontally
     frame = cv2.flip(frame, 0)
+    frame = cv2.flip(frame, 1)
     cv2.imshow("test", frame)
 
     k = cv2.waitKey(1)
