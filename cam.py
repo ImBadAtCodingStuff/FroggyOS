@@ -1,3 +1,9 @@
+
+
+# I am no longer sing this lib but may -
+# need it for debugging later
+
+
 from cv2 import *
 
 #cam_port = 0

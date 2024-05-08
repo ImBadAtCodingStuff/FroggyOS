@@ -19,5 +19,6 @@ def get_frame():
         print("failed to grab frame")
     # Flip the frame horizontally
     frame = cv2.flip(frame, 0)
+    frame = cv2.flip(frame, 1)
 
     return frame

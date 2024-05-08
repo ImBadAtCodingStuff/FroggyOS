@@ -1,6 +1,6 @@
 import Drivetrain.turn as turn
 import Drivetrain.drive as drivetrain
-import cam as camera
+#import cam as camera
 from time import sleep
 import autonomous
 
@@ -43,9 +43,9 @@ Joysticks = [myInput.joystick.Joystick(x) for x in range(myInput.joystick.get_co
 
 myInput.init()
 
-def image_capture():
-	image_capture_thread = threading.Thread(target=camera.take_image)
-	image_capture_thread.start()
+#def image_capture():
+	#image_capture_thread = threading.Thread(target=camera.take_image)
+	#image_capture_thread.start()
 
 def AUTONOMOUS():
     while True:
@@ -141,7 +141,8 @@ def CONTROLLER():
                     pass
                 if controller1.get_button(4):
                     #print("button Y pressed...") 
-                    image_capture()     
+                    #image_capture()     
+                    pass
                 if controller1.get_button(3):
                     #print("button X pressed...")
                     pass
