@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 
 import Drivetrain.turn as turn
-import Globals
+import Global_var
 import cv2
 
 
@@ -82,7 +82,7 @@ def autoTick():
         img_counter += 1
 
 def cancel_auto():
-    
+
     cam.release()
 
     cv2.destroyAllWindows()
