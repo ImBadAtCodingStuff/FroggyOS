@@ -56,9 +56,10 @@ def Listen_to_socket():
                 print('nothing in packet')
 
             if decoded == 'mode = controller':
-                current_mode = 'mode = controller'
                 if existing_auto >= 1:
+                    print("\n\n\cancel auto\n\n")
                     autonomous.cancel_auto()
+                current_mode = 'mode = controller'
 
             if decoded == 'mode = autonomous':
                 current_mode = 'mode = autonomous'

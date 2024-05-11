@@ -2,27 +2,26 @@ from PIL import Image
 import numpy as np
 
 import Drivetrain.turn as turn
-import getImage
 import Globals
 import cv2
 
 
 
-##################################### camera config
-# What port is the camera on?
-USB_CAMERA = 0
+
+def config():
+    # What port is the camera on?
+    USB_CAMERA = 0
 
 
-cam = cv2.VideoCapture(USB_CAMERA)
+    cam = cv2.VideoCapture(USB_CAMERA)
 
-# Set the resolution to 640x480
-cam.set(3, 640)
-cam.set(4, 480)
+    # Set the resolution to 640x480
+    cam.set(3, 640)
+    cam.set(4, 480)
 
-cv2.namedWindow("USB Camera Feed")
+    cv2.namedWindow("USB Camera Feed")
 
-img_counter = 0
-####################################
+    img_counter = 0
 
 
 # keep car centered in the lines
