@@ -41,6 +41,7 @@ def Listen_to_socket():
     serversocket.bind(('10.42.0.1', 701))
     serversocket.listen(1) # become a server socket, maximum 1 connections
 
+    existing_auto = 0
     while True:
         #print("hello world")
         connection, address = serversocket.accept()
@@ -56,9 +57,12 @@ def Listen_to_socket():
 
             if decoded == 'mode = controller':
                 current_mode = 'mode = controller'
+                if existing_auto >= 1:
+                    autonomous.cancel_auto()
 
             if decoded == 'mode = autonomous':
                 current_mode = 'mode = autonomous'
+                existing_auto = 1
         else:
             print("nothing in buffer...")
 

@@ -81,3 +81,10 @@ def autoTick():
         cv2.imwrite(img_name, frame)
         print("{} written!".format(img_name))
         img_counter += 1
+
+def cancel_auto():
+    
+    cam.release()
+
+    cv2.destroyAllWindows()
+
