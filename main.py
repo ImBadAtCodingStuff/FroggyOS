@@ -42,6 +42,7 @@ def Listen_to_socket():
     serversocket.listen(1) # become a server socket, maximum 1 connections
 
     while True:
+        #print("hello world")
         connection, address = serversocket.accept()
         buf = connection.recv(64)
         if len(buf) > 0:
@@ -62,10 +63,11 @@ def Listen_to_socket():
             print("nothing in buffer...")
 
 def AUTONOMOUS():
-    while True:
-        autonomous.autoTick()
+    print("autonomous was selected just now")
+    autonomous.autoTick()
 
 def CONTROLLER():
+    '''
     for event in myInput.event.get():
         
         #print(event)
@@ -215,14 +217,15 @@ def CONTROLLER():
             if event.button == 0:
                 #print("button RIGHT_STICK_IN unPressed...")
                 pass
+        '''
 
 # break out thread for checking current state
 listen_thread = threading.Thread(target=Listen_to_socket)
 listen_thread.start()
 
-while True:
 
-    print(current_mode)
+while True:
+    #print("llllllllllllllllllll")
     if current_mode == '':
         pass
     if current_mode == 'mode = controller':

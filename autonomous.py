@@ -42,23 +42,32 @@ def get_lane_pos(frame):
     return average_position[0]
 
 def autoTick():
-    # get current frame from camera
-    frame = getImage.get_frame()
+    '''
+    try:
+        # get current frame from camera
+        frame = getImage.get_frame()
 
-    # get location in lane based on center line
-    lane_pos = get_lane_pos(frame)
+        # get location in lane based on center line
+        lane_pos = get_lane_pos(frame)
+    except:
+        print("failed to grab image")
 
-    # steer based on lane location
-    if lane_pos > Globals.AUTO_CALIBRATION and lane_pos < Globals.AUTO_CALIBRATION + Globals.CENTER_WIDTH:
-        # reset servo
-        turn.turn_reset()
+    # this is for debug purposes
+    try:
+        # steer based on lane location
+        if lane_pos > Globals.AUTO_CALIBRATION and lane_pos < Globals.AUTO_CALIBRATION + Globals.CENTER_WIDTH:
+            # reset servo
+            turn.turn_reset()
 
-    else:
-        if lane_pos < Globals.AUTO_CALIBRATION:
-            # steer left
-            turn.turn_angle(-Globals.ADJUST_SENSITIVITY)
+        else:
+            if lane_pos < Globals.AUTO_CALIBRATION:
+                # steer left
+                turn.turn_angle(-Globals.ADJUST_SENSITIVITY)
 
-        if lane_pos > Globals.AUTO_CALIBRATION:
-            # steer right
-            turn.turn_angle(Globals.ADJUST_SENSITIVITY)
+            if lane_pos > Globals.AUTO_CALIBRATION:
+                # steer right
+                turn.turn_angle(Globals.ADJUST_SENSITIVITY)
+    except:
+        print("lol bad code")
+    '''
 
