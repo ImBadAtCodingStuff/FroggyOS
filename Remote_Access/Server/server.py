@@ -2,7 +2,7 @@ import socket
 
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serversocket.bind(('10.42.0.1', 701))
-serversocket.listen(1) # become a server socket, maximum 5 connections
+serversocket.listen(1) # become a server socket, maximum 1 connections
 
 while True:
     connection, address = serversocket.accept()
