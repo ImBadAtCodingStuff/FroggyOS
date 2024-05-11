@@ -63,7 +63,6 @@ def Listen_to_socket():
             print("nothing in buffer...")
 
 def AUTONOMOUS():
-    print("autonomous was selected just now")
     autonomous.autoTick()
 
 def CONTROLLER():
