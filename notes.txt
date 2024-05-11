@@ -1,0 +1,10 @@
+
+
+pi net pass: froggybot
+
+
+
+# i want to implemant threading in main. Have main script run but have a second thread that 
+# gets data from the socket. if that data wants to change the current mode then is does changes a mode vari.
+# the main script should run a check every tick to check which mode its currently in and 
+# switch if appropriate

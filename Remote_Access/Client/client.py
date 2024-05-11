@@ -21,3 +21,18 @@ except OSError as e:
 
 client.close()
 server.close()
+
+
+exit()
+
+# this is the current working code
+import socket
+
+
+while True:
+    string = input("message: ")
+    encoded = string.encode('utf-8')
+
+    clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    clientsocket.connect(('10.42.0.1', 701))
+    clientsocket.send(encoded)
