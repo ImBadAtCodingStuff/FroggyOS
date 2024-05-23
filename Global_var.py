@@ -1,5 +1,7 @@
 # this is a file to store all the global variables
 
+continue_auto = 'false'
+
 # camera USB port
 USB_CAMERA = 0
 

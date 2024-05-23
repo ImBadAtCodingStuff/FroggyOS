@@ -5,23 +5,11 @@ import Drivetrain.turn as turn
 import Global_var
 import cv2
 
+from time import sleep
 
 
 
-def config():
-    # What port is the camera on?
-    USB_CAMERA = 0
 
-
-    cam = cv2.VideoCapture(USB_CAMERA)
-
-    # Set the resolution to 640x480
-    cam.set(3, 640)
-    cam.set(4, 480)
-
-    cv2.namedWindow("USB Camera Feed")
-
-    img_counter = 0
 
 
 # keep car centered in the lines
@@ -59,31 +47,35 @@ def get_lane_pos(frame):
     print(f'Average position of yellow pixels: {average_position}')
     return average_position[0]
 
+#ticks = 0
+
 def autoTick():
-    ret, frame = cam.read()
-    if not ret:
-        print("failed to grab frame")
-        print("break condition...")
-    # Flip the frame horizontally
-    frame = cv2.flip(frame, 0)
-    frame = cv2.flip(frame, 1)
-    cv2.imshow("test", frame)
+    USB_CAMERA = 0
+    cam = cv2.VideoCapture(USB_CAMERA)
+    # Set the resolution to 640x480
+    cam.set(3, 640)
+    cam.set(4, 480)
 
-    k = cv2.waitKey(1)
-    if k%256 == 27:
-        # ESC pressed
-        print("Escape hit, closing...")
-        print("break condition")
-    elif k%256 == 32:
-        # SPACE pressed
-        img_name = "opencv_frame_{}.png".format(img_counter)
-        cv2.imwrite(img_name, frame)
-        print("{} written!".format(img_name))
-        img_counter += 1
-
-def cancel_auto():
-
-    cam.release()
-
-    cv2.destroyAllWindows()
+    #    cv2.namedWindow("USB Camera Feed")
+    img_counter = 0
+    while True:
+            
+        if Global_var.continue_auto == 'false':
+            print("cancel auto")
+            cam.release()
+            cv2.destroyAllWindows()
+            #ticks = 0
+            sleep(10)
+        else:
+            #ticks+=1
+        
+            ret, frame = cam.read()
+            if not ret:
+                print("failed to grab frame")
+                print("break condition...")
+            # Flip the frame horizontally
+            frame = cv2.flip(frame, 0)
+            frame = cv2.flip(frame, 1)
+            cv2.imshow("USB CAMERA", frame)
+            #print(ticks)
 
